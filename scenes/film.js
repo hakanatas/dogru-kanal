@@ -1,0 +1,95 @@
+/* ─────────────────────────────────────────────────────────────
+   DOĞRU KANAL — BTY.6.3.3 (senaryo)
+   Her vuruş bir altyazıdır: tr, en, note (öğretmen için seslendirme).
+   Değiştirdikten sonra: npm run build
+   ───────────────────────────────────────────────────────────── */
+BF.defineFilm({
+  meta: {
+    slug: 'dogru-kanal', title: 'Doğru Kanal', titleEn: 'The Right Channel', code: 'BTY.6.3.3',
+    outcomeEn: 'Working with communication technologies',
+    summary: 'Günlük ve resmî durumlar için uygun iletişim teknolojisi seçilir: arkadaşlara anlık mesaj, öğretmene e-posta, acil durumda telefon. Bir e-postanın parçaları (adres, konu, ileti, ek) ve resmî yazışma kuralları tanıtılır. Öğretmene ödev göndermek için e-posta hazırlanır: alıcı, konu, saygılı bir ileti ve ek dosya eklenip gönderilir. Son olarak iletişim araçlarının kullanımı amaca uygunluk açısından değerlendirilir.',
+    summaryEn: 'Karo picks suitable tools for everyday and formal situations, learns the parts of an email and formal-writing rules, sends his homework to his teacher by email with a subject, a polite message and an attachment, and judges tool choices for purpose.',
+    blurb: 'Günlük ve resmî iletişim, e-postanın parçaları, ödev e-postası göndermek, amaca uygun araç.',
+    posterAlt: 'Başlık ve Karo; çevresinde e-posta, telefon, ek dosya ve okul karoları',
+  },
+  scenes: [
+    { type: 'intro', icons: [{ icon: 'mail', c: 'kobalt' }, { icon: 'sms', c: 'safran' }, { icon: 'call', c: 'zumrut' }, { icon: 'videocall', c: 'mercan' }, { icon: 'school', c: 'mor' }, { icon: 'fileDoc', c: 'kobalt' }, { icon: 'cloud', c: 'turkuaz' }, { icon: 'handshake', c: 'zumrut' }],
+      beats: [
+        { tr: 'Ödevimi öğretmenime nasıl göndereyim?', en: 'How should I send my homework to my teacher?', extra: 1,
+          note: 'Karo afiş ödevini bitirdi ve öğretmenine göndermek istiyor. Anlık mesaj mı atmalı, e-posta mı göndermeli?', karo: { mood: 'thinking', caret: '?' } },
+        { tr: 'Her iş için doğru kanalı seçelim', en: 'Let\'s pick the right channel for each job',
+          note: 'Amacımıza uygun iletişim teknolojisini seçmeyi öğrenelim.' },
+      ] },
+    { type: 'sort', name: 'Günlük mü, resmî mi?', en: 'Everyday or formal?', desc: 'İletişim teknolojilerini amaca uygun belirlemek.', out: 'a',
+      bins: [{ label: 'GÜNLÜK', c: 'safran' }, { label: 'RESMÎ', c: 'kobalt' }],
+      items: [
+        { icon: 'sms', name: 'Arkadaşa kutlama: anlık mesaj', bin: 0, beat: 1 },
+        { icon: 'videocall', name: 'Dedemle görüntülü görüşme', bin: 0, beat: 1 },
+        { icon: 'mail', name: 'Öğretmene ödev: e-posta', bin: 1, beat: 2 },
+        { icon: 'school', name: 'Okula bilgi: EBA mesajı', bin: 1, beat: 2 },
+        { icon: 'webcam', name: 'Kulüp toplantısı: video konferans', bin: 1, beat: 2 },
+      ],
+      beats: [
+        { tr: 'Kime, ne için yazıyoruz?', en: 'Who are we writing to, and why?',
+          note: 'Önce kiminle ve ne amaçla iletişim kuracağımızı düşünürüz.' },
+        { tr: 'Günlük işlerde anlık mesaj, görüntülü görüşme', en: 'Everyday: instant messages and video calls',
+          note: 'Arkadaşımızın doğum gününü anlık mesajla kutlarız. Dedemizle görüntülü görüşürüz.' },
+        { tr: 'Resmî işlerde e-posta, EBA, video konferans', en: 'Formal: email, the school platform, video meetings', extra: 1,
+          note: 'Öğretmenimize ödev gönderirken e-posta, okula bilgi verirken EBA mesajı, kulüp toplantısında video konferans kullanırız.' },
+      ] },
+    { type: 'cards', name: 'E-postanın parçaları', en: 'Parts of an email', desc: 'Adres, konu, ileti ve ek; resmî yazışma kuralları.', out: 'b',
+      cards: [
+        { word: 'ADRES', def: 'kullaniciadi@alanadi: kime gidecek?', icon: 'mail', c: 'kobalt' },
+        { word: 'KONU', def: 'E-postanın ne hakkında olduğu, kısaca', icon: 'target', c: 'safran' },
+        { word: 'EK', def: 'E-postaya eklenen dosya', icon: 'fileDoc', c: 'mercan' },
+      ],
+      result: { word: 'İLETİ', c: 'turkuaz', chips: ['selamlama', 'kısa ve açık', 'imza'], line: 'Resmî yazışmada saygılı ve düzgün Türkçe' },
+      beats: [
+        { tr: 'Adres: e-posta kime gidecek?', en: 'Address: who will get the email?',
+          note: 'E-posta adresi kullanıcı adı, @ işareti ve alan adından oluşur. Adresi dikkatle yazarız; bir harf yanlışsa e-posta ulaşmaz.' },
+        { tr: 'Konu: kısaca ne hakkında?', en: 'Subject: what is it about, briefly?',
+          note: 'Konu satırı alıcıya e-postanın ne hakkında olduğunu kısaca söyler: Bilişim ödevi, afişim.' },
+        { tr: 'Ek: gönderdiğimiz dosya', en: 'Attachment: the file we send',
+          note: 'Ödev dosyamızı e-postaya ek olarak ekleriz.' },
+        { tr: 'İleti: selam, kısa mesaj, imza', en: 'Message: greeting, short text, signature', extra: 1,
+          note: 'İletiye bir selamlamayla başlar, kısa ve açık yazar, adımızla bitiririz. Resmî yazışmada saygılı ve düzgün Türkçe kullanırız.' },
+      ] },
+    { type: 'app', app: 'mail', title: 'E-posta', name: 'E-postayı gönder', en: 'Send the email', desc: 'Alıcı, konu, ileti ve ek dosya ile e-posta göndermek.', out: 'b',
+      data: { to: 'bilisim.ogretmeni@okul.k12.tr', cc: '', subject: 'Bilişim ödevi: Çöpünü kutuya at afişi', body: ['Merhaba Öğretmenim,', 'Afiş ödevimi ekte gönderiyorum.', 'Saygılarımla, Karo (6-B)'], file: 'cop-afisi.png' },
+      tools: [{ id: 'to', label: 'Kime' }, { id: 'subject', label: 'Konu' }, { id: 'body', label: 'İleti' }, { id: 'attach', label: 'Ek' }, { id: 'send', label: 'Gönder' }],
+      beats: [
+        { tr: 'Alıcının adresini dikkatle yaz', en: 'Type the address carefully', tool: 'to', hint: '@ işaretini unutma',
+          note: 'Öğretmenimizin e-posta adresini dikkatle yazarız.' },
+        { tr: 'Açık bir konu yaz', en: 'Write a clear subject', tool: 'subject', hint: 'Ne gönderdiğin belli olsun',
+          note: 'Konu satırına ne gönderdiğimizi açıkça yazarız: Bilişim ödevi, Çöpünü kutuya at afişi.' },
+        { tr: 'Saygılı bir ileti yaz, dosyayı ekle', en: 'Write a polite message and attach the file', tools: ['body', 'attach'], hint: 'Selam, mesaj, imza + ek',
+          note: 'Merhaba Öğretmenim diye başlar, ödevimizi ekte gönderdiğimizi yazar, adımız ve sınıfımızla bitiririz. Afiş dosyamızı ekleriz.' },
+        { tr: 'Kontrol et ve gönder', en: 'Check it and send', tool: 'send', hint: 'Göndermeden önce bir kez oku', extra: 1,
+          note: 'Göndermeden önce e-postayı bir kez okuruz. Her şey tamam: Gönder!' },
+      ] },
+    { type: 'judge', name: 'Amaca uygun mu?', en: 'Fit for purpose?', desc: 'İletişim araçlarının kullanımı amaca uygunluk açısından değerlendirilir.', out: 'c', labels: { ok: 'uygun', no: 'uygun değil' },
+      beats: [
+        { tr: 'Öğretmene "slm hocam ödev" yazmak', en: 'Writing "hey teach homework" to a teacher',
+          note: 'Resmî bir yazışmada kısaltmalı ve selamsız bir mesaj uygun değildir.',
+          row: { icon: 'sms', text: 'Öğretmenime "slm hocam ödev" diye mesaj attım', ok: false, why: 'Resmî ve saygılı yazmalıyım' } },
+        { tr: 'Acil durumda ailemi aramak', en: 'Calling my family in an emergency',
+          note: 'Acil bir durumda e-posta yazmak yerine hemen telefonla aramak amaca uygundur: eş zamanlı iletişim.',
+          row: { icon: 'call', text: 'Servisi kaçırınca annemi hemen telefonla aradım', ok: true, why: 'Acil durumda eş zamanlı iletişim' } },
+        { tr: 'Büyük videoyu bulut bağlantısıyla paylaşmak', en: 'Sharing a big video with a cloud link',
+          note: 'Çok büyük bir video dosyası e-postaya sığmayabilir. Bulut bağlantısı paylaşmak daha uygundur.',
+          row: { icon: 'cloud', text: 'Büyük video ödevimi bulut bağlantısıyla paylaştım', ok: true, why: 'E-postaya sığmayan dosya için doğru yol' } },
+      ] },
+    { type: 'summary',
+      lines: [
+        { icon: 'sms', c: 'safran', text: 'Günlük işe anlık mesaj, resmî işe e-posta' },
+        { icon: 'mail', c: 'kobalt', text: 'Adres, konu, saygılı ileti, ek' },
+        { icon: 'call', c: 'zumrut', text: 'Acil durumda eş zamanlı iletişim' },
+      ],
+      beats: [
+        { tr: 'Aklında kalsın: amaca uygun kanal, saygılı dil', en: 'Remember: the right channel and polite words',
+          note: 'Aklında kalsın: amacına uygun iletişim aracını seç ve her zaman saygılı yaz.' },
+        { tr: 'Doğru kanal, doğru mesaj!', en: 'The right channel, the right message!',
+          note: 'Doğru kanalı seçersen mesajın doğru biçimde ulaşır!' },
+      ] },
+  ],
+});
